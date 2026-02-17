@@ -1,6 +1,6 @@
 package Arrays;
 
-class Palindrome {
+class PalindromeStringBuilder {
     public static void main(String[] args) {
 
         String s = "Was it a car or a cat I saw?";
