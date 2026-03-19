@@ -2,37 +2,70 @@ package Arrays.SlidingWindow;
 
 class TicTacToe {
     public String tictactoe(int[][] moves) {
-        // We have 3 rows, 3 columns, 1 main diagonal, and 1 anti-diagonal
+
         int[] rows = new int[3];
-        int[] cols = new int[3];
-        int diag = 0;
-        int antiDiag = 0;
+        int[] column = new int[3];
+        int diag = 0, antidiag = 0, pa = 0, pb = 0;
 
         for (int i = 0; i < moves.length; i++) {
             int r = moves[i][0];
             int c = moves[i][1];
 
-            // Player A (even index) is +1, Player B (odd index) is -1
             int val = (i % 2 == 0) ? 1 : -1;
 
-            // Update the counters
-            rows[r] += val;
-            cols[c] += val;
+            //updating row and column array values in ith move
+            rows[r] = rows[r] + val;
+            column[c] = column[c] + val;
 
-            if (r == c) diag += val;
-            if (r + c == 2) antiDiag += val;
+            if (r == c) diag = diag + val;
+            if (r + c == 2) antidiag = antidiag + val;
 
-            // Check if anyone reached 3 or -3 in this move
-            if (Math.abs(rows[r]) == 3 || Math.abs(cols[c]) == 3 ||
-                    Math.abs(diag) == 3 || Math.abs(antiDiag) == 3) {
+            //now after every move we will keep checking if score turned out to be 3 for either 'A' or 'B'
+
+            if (Math.abs(rows[r]) == 3 || Math.abs(column[c]) == 3 || Math.abs(diag) == 3 || Math.abs(antidiag) == 3) {
                 return (val == 1) ? "A" : "B";
             }
         }
-
-        // If no winner, check if board is full (9 moves) or still pending
+        //only after checking all moves , if no winner
         return (moves.length == 9) ? "Draw" : "Pending";
+
+
     }
 }
+//code assistant provided code
+//        // We have 3 rows, 3 columns, 1 main diagonal, and 1 anti-diagonal
+//        int[] rows = new int[3];
+//        int[] cols = new int[3];
+//        int diag = 0;
+//        int antiDiag = 0;
+//
+//        for (int i = 0; i < moves.length; i++) {
+//            int r = moves[i][0];
+//            int c = moves[i][1];
+//
+//            // Player A (even index) is +1, Player B (odd index) is -1
+//            int val = (i % 2 == 0) ? 1 : -1;
+//
+//            // Update the counters
+//            rows[r] += val;
+//            cols[c] += val;
+//
+//            if (r == c) diag += val;
+//            if (r + c == 2) antiDiag += val;
+//
+//            // Check if anyone reached 3 or -3 in this move
+//            if (Math.abs(rows[r]) == 3 || Math.abs(cols[c]) == 3 ||
+//                    Math.abs(diag) == 3 || Math.abs(antiDiag) == 3) {
+//                return (val == 1) ? "A" : "B";
+//            }
+//        }
+//
+//        // If no winner, check if board is full (9 moves) or still pending
+//        return (moves.length == 9) ? "Draw" : "Pending";
+//    }
+
+
+
 
 
 //In this problem, moves is a list of coordinates where players placed their marks.
