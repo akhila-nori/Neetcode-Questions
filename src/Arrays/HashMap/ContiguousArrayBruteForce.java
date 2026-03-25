@@ -1,6 +1,6 @@
 package Arrays.HashMap;
 
-class ContiguousArray {
+class ContiguousArrayBruteForce {
     public int findMaxLength(int[] nums) {
 
         int maxLen = 0;
